@@ -1,2 +1,2 @@
 #this is gitrepository
-#just for learning
+#just for learning and fun
