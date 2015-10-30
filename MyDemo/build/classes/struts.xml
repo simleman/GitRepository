@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts SYSTEM "http://struts.apache.org/dtds/struts-2.3.dtd" >
+<struts>
+	<constant name="struts.devMode" value="true"></constant>
+	<package name="base" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="logininterceptor"
+				class="demo.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="myInterceptor">
+				<interceptor-ref name="logininterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="login">/user/login.jsp</result>
+			<result name="input">/user/login.jsp</result>
+		</global-results>
+	</package>
+	
+	<!-- <package name="list" namespace="/list" extends="struts-default">
+		<action name="show" class="userAction" method="show">
+			<result name="success">/user/userlist.jsp</result>
+		</action>
+		<action name="login" class="userAction" method="login">
+			<result name="success" type="redirectAction">show</result>
+		</action>
+	</package>
+	<package name="userlist" extends="base" namespace="/userlist">
+		<default-interceptor-ref name="myInterceptor"></default-interceptor-ref>
+		<action name="add" class="userAction" method="add">
+			<result name="success" type="redirectAction">
+				<param name="actionName">show</param>
+				<param name="namespace">/list</param>
+			</result>
+		</action>
+		<action name="preadd" class="userAction" method="preadd">
+			<result name="success">/user/add.jsp</result>
+		</action>
+		<action name="preupdate" class="userAction" method="preupdate">
+			<result name="success">/user/update.jsp</result>
+		</action>
+		<action name="update" class="userAction" method="update">
+			<result name="success" type="redirectAction">
+				<param name="actionName">show</param>
+				<param name="namespace">/list</param>
+			</result>
+		</action>
+		<action name="delete" class="userAction" method="delete">
+			<result name="success" type="redirectAction">
+				<param name="actionName">show</param>
+				<param name="namespace">/list</param>
+			</result>
+		</action>
+		<action name="logout" class="userAction" method="logout">
+			<result name="input" type="redirectAction">
+				<param name="actionName">show</param>
+				<param name="namespace">/list</param>
+			</result>
+		</action>
+	</package>
+	<package name="user" namespace="/user" extends="json-default">
+		<action name="login" class="userAction" method="login">
+			<result name="success" type="json"></result>
+			<result name="input" type="json"></result>
+		</action>
+	</package> -->
+	<package name="questionType" namespace="/questionType" extends="json-default">
+		<action name="queryPage" class="questionTypeAction" method="queryPage">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="queryPageByName" class="questionTypeAction" method="queryPageByName">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="deleteByIds" class="questionTypeAction" method="deleteByIds">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="updateType" class="questionTypeAction" method="update">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="addType" class="questionTypeAction" method="add">
+			<result name="success" type="json"></result>
+		</action>
+	</package>
+	
+	<package name="station" namespace="/station" extends="json-default">
+		<action name="queryPage" class="stationAction" method="queryPage">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="queryPageByName" class="stationAction" method="queryPageByName">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="deleteByIds" class="stationAction" method="deleteByIds">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="updateType" class="stationAction" method="update">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="addType" class="stationAction" method="add">
+			<result name="success" type="json"></result>
+		</action>
+	</package>
+	
+	<package name="testquestions" namespace="/testquestions" extends="json-default">
+		<action name="queryPage" class="testQuestionsAction" method="queryPage">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="queryPageByName" class="testQuestionsAction" method="queryPageByName">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="deleteByIds" class="testQuestionsAction" method="deleteByIds">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="update" class="testQuestionsAction" method="update">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="add" class="testQuestionsAction" method="add">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="count" class="testQuestionsAction" method="addComBox">
+			<result name="success" type="json"></result>
+		</action>
+		
+	</package>
+	
+	<package name="paperManage" namespace="/paperManage" extends="json-default">
+		<action name="queryPage" class="paperAction" method="queryPage">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="queryPageByName" class="paperAction" method="queryPageByName">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="deleteByIds" class="paperAction" method="deleteByIds">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="update" class="paperAction" method="update">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="add" class="paperAction" method="addByMan">
+			<result name="success" type="json"></result>
+		</action>
+		<action name="addbysystem" class="paperAction" method="addBySystem">
+			<result name="success" type="json"></result>
+		</action>
+	</package>
+	 <package name="paperView" namespace="/paperView" extends="struts-default">
+	 	<action name="preview" class="paperAction" method="preview">
+			<result name="success">/paper/paperView.jsp</result>
+		</action>
+	 	<action name="printpreview" class="paperAction" method="printpreview">
+			<result name="success"></result>
+		</action>
+	 	<action name="download" class="paperAction" method="download">
+			<result name="success"></result>
+		</action>
+	 </package>
+</struts>
+

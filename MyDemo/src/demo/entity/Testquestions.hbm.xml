@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-5-27 16:42:54 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="demo.entity.Testquestions" table="testquestions" catalog="test">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="station" class="demo.entity.Station" fetch="select">
+            <column name="stationid" />
+        </many-to-one>
+        <many-to-one name="questiontype" class="demo.entity.Questiontype" fetch="select">
+            <column name="questiontypeid" />
+        </many-to-one>
+        <property name="questionname" type="string">
+            <column name="questionname" not-null="true" />
+        </property>
+        <property name="correct" type="string">
+            <column name="correct" length="200" not-null="true" />
+        </property>
+        <property name="questionoption" type="string">
+            <column name="questionoption" length="255" />
+        </property>
+        <set name="papers" table="paper_test" inverse="true" cascade="save-update">
+            <key>
+                <column name="testid" />
+            </key>
+            <many-to-many class="demo.entity.Paper" column="id"/>
+        </set>
+    </class>
+</hibernate-mapping>
